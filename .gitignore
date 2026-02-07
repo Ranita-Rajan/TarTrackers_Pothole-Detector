@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+.netlify/
+.netlify/functions-serve/
+.vite/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editor settings
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local model weights
+*.pt
+*.onnx
+!public/models/**/*.onnx
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated
+.DS_Store
+Thumbs.db

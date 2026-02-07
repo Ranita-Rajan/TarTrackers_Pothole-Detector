@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Environment Check - Tar.Trackers</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    h1 { color: #8aff7a; }
+    .section {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .var {
+      font-family: monospace;
+      background: #0f172a;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .present { color: #8aff7a; }
+    .missing { color: #ff4444; }
+    .value { color: #64748b; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Environment Variables Check</h1>
+  <p>This page shows what environment variables are available in production.</p>
+  
+  <div class="section">
+    <h2>Vite Environment Variables</h2>
+    <div id="vite-vars"></div>
+  </div>
+
+  <div class="section">
+    <h2>Build-time Info</h2>
+    <div id="build-info"></div>
+  </div>
+
+  <script>
+    const requiredVars = [
+      'VITE_FIREBASE_API_KEY',
+      'VITE_FIREBASE_AUTH_DOMAIN',
+      'VITE_FIREBASE_PROJECT_ID',
+      'VITE_FIREBASE_STORAGE_BUCKET',
+      'VITE_FIREBASE_MESSAGING_SENDER_ID',
+      'VITE_FIREBASE_APP_ID',
+      'VITE_MAPBOX_TOKEN',
+      'VITE_SHARE_PIN_URL'
+    ];
+
+    const viteVarsContainer = document.getElementById('vite-vars');
+    const buildInfoContainer = document.getElementById('build-info');
+
+    // Check Vite env vars (these are baked into the build)
+    requiredVars.forEach(varName => {
+      const value = import.meta.env[varName];
+      const div = document.createElement('div');
+      div.className = 'var';
+      
+      if (value) {
+        // Show first 20 chars of value
+        const displayValue = value.length > 20 ? value.substring(0, 20) + '...' : value;
+        div.innerHTML = `
+          <span class="present">✓ ${varName}</span>
+          <span class="value">${displayValue}</span>
+        `;
+      } else {
+        div.innerHTML = `<span class="missing">✗ ${varName}</span>`;
+      }
+      
+      viteVarsContainer.appendChild(div);
+    });
+
+    // Build info
+    buildInfoContainer.innerHTML = `
+      <div class="var">
+        <span>Mode:</span>
+        <span class="value">${import.meta.env.MODE}</span>
+      </div>
+      <div class="var">
+        <span>Dev:</span>
+        <span class="value">${import.meta.env.DEV}</span>
+      </div>
+      <div class="var">
+        <span>Prod:</span>
+        <span class="value">${import.meta.env.PROD}</span>
+      </div>
+      <div class="var">
+        <span>Hostname:</span>
+        <span class="value">${window.location.hostname}</span>
+      </div>
+      <div class="var">
+        <span>Build Time:</span>
+        <span class="value">${new Date().toISOString()}</span>
+      </div>
+    `;
+  </script>
+</body>
+</html>

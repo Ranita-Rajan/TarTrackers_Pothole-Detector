@@ -1,0 +1,21 @@
+{
+  "model": "YOLOv8n Pothole Detection",
+  "version": "2.0.0",
+  "format": "onnx",
+  "input_size": 640,
+  "opset": 12,
+  "classes": [
+    "pothole"
+  ],
+  "conf_threshold": 0.25,
+  "iou_threshold": 0.45,
+  "input_name": "images",
+  "output_name": "output0",
+  "output_shape": [
+    1,
+    5,
+    8400
+  ],
+  "source": "epoch150.pt",
+  "converted_at": "2025-10-29 11:43:38.676109"
+}

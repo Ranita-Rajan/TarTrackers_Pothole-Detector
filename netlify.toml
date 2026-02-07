@@ -1,0 +1,52 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Remove strict COEP/COOP headers - they break Firebase!
+# [[headers]]
+#   for = "/*"
+#   [headers.values]
+#     Cross-Origin-Embedder-Policy = "require-corp"
+#     Cross-Origin-Opener-Policy = "same-origin"
+#     X-Frame-Options = "DENY"
+#     X-Content-Type-Options = "nosniff"
+
+# Security headers that don't break Firebase
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+[[headers]]
+  for = "/models/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.onnx"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Cache-Control = "public, max-age=31536000, immutable"
