@@ -62,7 +62,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }: Au
     try {
       if (mode === 'signup') {
         await signUpWithEmail(email, password);
-        toast({ title: '✅ Account created!', description: 'Welcome to potholes.live' });
+        toast({ title: '✅ Account created!', description: 'Welcome to Tar Trackers' });
         onClose();
       } else {
         await signInWithEmail(email, password);
