@@ -125,7 +125,7 @@ const DesktopView = ({ onClose }: DesktopViewProps) => {
               <div className="space-y-2">
                 <p className="font-bold text-lg">Scan this QR code on your phone</p>
                 <p className="text-sm text-muted-foreground">
-                  Or visit: <span className="font-mono font-bold text-primary">Tar.Trackers</span>
+                  Or visit: <span className="font-mono font-bold text-primary">Tar-Trackers</span>
                 </p>
               </div>
             </div>
