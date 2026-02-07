@@ -4,9 +4,12 @@ import { createClient, SupabaseClient, RealtimeChannel } from '@supabase/supabas
 // Hardcoded Supabase configuration (safe to expose - protected by RLS policies)
 // These are the actual values that will always be used
 const SUPABASE_CONFIG = {
-  url: 'https://hzarhvimccqzivbsmgtk.supabase.co',
-  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6YXJodmltY2Nxeml2YnNtZ3RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNDM1NzksImV4cCI6MjA3NzgxOTU3OX0.moCXP4WDVPGoq1OCW7Lokf7Z7ijQKEa4HqnD1R55a3s'
-} as const;
+
+    url: import.meta.env.VITE_SUPABASE_URL || '',
+
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+
+  } as const;
 
 let supabase: SupabaseClient | null = null;
 
