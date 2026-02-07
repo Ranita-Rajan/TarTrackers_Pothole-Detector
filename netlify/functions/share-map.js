@@ -20,7 +20,7 @@ export default async (req, context) => {
     const style = body?.style || 'mapbox/navigation-night-v1';
 
     // Helpers to build overlay strings similarly to the client code
-    const pinUrl = encodeURIComponent(body?.pinUrl || 'https://potholes.live/icon-192.png');
+    const pinUrl = encodeURIComponent(body?.pinUrl || 'https://tar-trackers/icon-192.png');
     const pins = points
       .map((p) => `url-${pinUrl}(${Number(p.lon).toFixed(6)},${Number(p.lat).toFixed(6)})`)
       .join(',');
