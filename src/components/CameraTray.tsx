@@ -674,7 +674,7 @@ const CameraTray = ({ isOpen, onClose, onPotholeDetected, gpsPosition }: CameraT
           <div className="portrait:px-6 portrait:py-4 landscape:px-3 landscape:py-2 border-b-4 border-foreground flex justify-between items-center flex-shrink-0">
             <div className="flex items-center gap-2">
               <img src="/icon-192.png" alt="Pothole Icon" className="portrait:w-8 portrait:h-8 landscape:w-6 landscape:h-6" />
-              <h2 className="portrait:text-2xl landscape:text-lg font-bold uppercase">Potholes<span className="text-primary">.live</span></h2>
+              <h2 className="portrait:text-2xl landscape:text-lg font-bold uppercase">Tar<span className="text-primary">Trackers</span></h2>
             </div>
             <Button variant="ghost" size="icon" onClick={handleClose} className="portrait:w-auto portrait:h-auto landscape:w-8 landscape:h-8">
               <X className="portrait:w-7 portrait:h-7 landscape:w-5 landscape:h-5" />
